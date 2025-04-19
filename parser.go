@@ -214,7 +214,7 @@ func (i *includes) UnmarshalJSON(b []byte) error {
 
 			i.goals[item.ID] = goal
 
-		case "memberships":
+		case "member":
 			member := &Member{
 				ID: item.ID,
 			}

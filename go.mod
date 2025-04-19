@@ -1,3 +1,3 @@
-module github.com/twoscott/patreon-go
+module github.com/ArmchairDevelopers/patreon-go
 
 go 1.16
