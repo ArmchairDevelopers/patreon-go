@@ -6,6 +6,7 @@ import (
 
 type options struct {
 	fields     map[string]string
+	filters    map[string]string
 	include    string
 	size       int
 	cursor     *string
@@ -35,6 +36,17 @@ func WithIncludes(include ...string) RequestOpt {
 func WithPageSize(size int) RequestOpt {
 	return func(o *options) {
 		o.size = size
+	}
+}
+
+// WithFilter allows you to filter results based on a specific field and value.
+func WithFilter(field, value string) RequestOpt {
+	return func(o *options) {
+		if o.filters == nil {
+			o.filters = make(map[string]string)
+		}
+
+		o.filters[field] = value
 	}
 }
 

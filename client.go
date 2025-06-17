@@ -269,6 +269,10 @@ func (c *Client) buildURL(path string, opts ...RequestOpt) (string, error) {
 		q.Set("page[cursor]", *cfg.cursor)
 	}
 
+	for field, value := range cfg.filters {
+		q.Set(fmt.Sprintf("filter[%s]", field), value)
+	}
+
 	u.RawQuery = q.Encode()
 	return u.String(), nil
 }
